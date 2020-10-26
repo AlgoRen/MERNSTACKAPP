@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-const express = require('express');
-const router = express.Router();
-
-// @route   GET API/posts
-// @desc    Test route
-// @access  Public
-router.get('/', (req, res) => res.send('Posts route'));
-
-module.exports = router;
-=======
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
@@ -258,4 +247,3 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
 });
 
 module.exports = router;
->>>>>>> 1a15defee4165e20a0c6cc3d46881179d413eec6
