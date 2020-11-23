@@ -18,13 +18,14 @@ const User = require("../../models/User");
 // @access  Private
 router.get("/me", auth, async (req, res) => {
   try {
-    //* Creating profile object: 
+    //* Creating profile object:
     //* By searching DB for a profile that belongs to user's id.
-    //* Populating our new profile object with the name and avatar, 
-    //* found from referencing the user model.
+    //* Populating our new profile object with the name and avatar,
+    //* found from referencing the user document.
     const profile = await Profile.findOne({
       user: req.user.id,
-    }).populate("user", ["name", "avatar"]);
+    }).populate("user", ["name", "avatar"]); // Returning the name and
+    // avatar from user document.
 
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
