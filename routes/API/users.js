@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
 
-const User = require('../../models/User')
+const User = require('../../models/User');
 
 // @route   POST API/users
 // @desc    Register user
@@ -18,6 +18,7 @@ router.post('/', [
     ).isLength({ min: 6 })
 ], 
 async (req, res) => { 
+    //* Error handeling
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -38,7 +39,7 @@ async (req, res) => {
             r: 'pg',
             d: 'mm'
         })
-
+        // If no user exist create user using a constructor
         user = new User({
             name, 
             email,
@@ -54,6 +55,7 @@ async (req, res) => {
         await user.save();
 
         // Return jsonwebtoken
+        //* Setting payload to hold the id that references the ObjectId set by MongoDB.
         const payload = {
             user: {
                 id: user.id
@@ -67,6 +69,7 @@ async (req, res) => {
             { expiresIn: 360000 }, 
             (err, token) => {
                 if(err) throw err;
+                //* Sending auth token to /api/users *
                 res.json({ token })
             }
             );

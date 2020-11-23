@@ -1,10 +1,12 @@
 import React, { Fragment, useState } from "react";
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { setAlert } from '../../actions/alert';
-import PropTypes from 'prop-types'
+import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
+import PropTypes from "prop-types";
 
-const Register = ({ setAlert }) => { // Destructuring off of props.
+const Register = ({ setAlert, register, isAuthenticated }) => {
+  // Destructuring off of props.
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,40 +17,24 @@ const Register = ({ setAlert }) => { // Destructuring off of props.
   const { name, email, password, password2 } = formData;
 
   // * Creating onChange event to update formData object. *
-  // Using [e.target.name] to select the value of name attribute 
-  const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+  // Using [e.target.name] to select the value assigned to 
+  // the name property and set it equal to that 
+  // target's value property value.
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-        setAlert("Passwords do not match", "danger");
+      setAlert("Passwords do not match", "danger");
     } else {
-        // Creating object to send.
-        // const newUser = {
-        //     name,
-        //     email,
-        //     password
-        // }
-        // Setting header in config object.
-    //     try {
-    //         const config = {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 "Clear-Site-Data": "*"
-    //             }
-    //         }
+      register({ name, email, password });
+    }
+  };
 
-    //         const body = JSON.stringify(newUser);
-    //         // * Using await on post request to return a token. *
-    //         const res = await axios.post('/api/users', body, config);
-    //         console.log(res.data);
-    //     } catch(err) {
-    //         console.error(err.response.data);
-    //     }
-    // }
-    console.log("SUCCESS");
+  if(isAuthenticated) {
+    return <Redirect to="/dashboard" />
   }
-}
 
   return (
     <Fragment>
@@ -56,24 +42,24 @@ const Register = ({ setAlert }) => { // Destructuring off of props.
       <p className="lead">
         <i className="fas fa-user"></i> Create Your Account
       </p>
-      <form className="form" onSubmit={e => onSubmit(e)}>
+      <form className="form" onSubmit={(e) => onSubmit(e)}>
         <div className="form-group">
-          <input 
-            type="text" 
-            placeholder="Name" 
-            name="name" 
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
             value={name}
-            onChange={e => onChange(e)}
-            required 
+            onChange={(e) => onChange(e)}
+            required
           />
         </div>
         <div className="form-group">
-          <input 
-            type="email" 
-            placeholder="Email Address" 
+          <input
+            type="email"
+            placeholder="Email Address"
             name="email"
-            value={email} 
-            onChange={e => onChange(e)}
+            value={email}
+            onChange={(e) => onChange(e)}
             required
           />
           <small className="form-text">
@@ -88,7 +74,7 @@ const Register = ({ setAlert }) => { // Destructuring off of props.
             name="password"
             minLength="6"
             value={password}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <div className="form-group">
@@ -98,7 +84,7 @@ const Register = ({ setAlert }) => { // Destructuring off of props.
             name="password2"
             minLength="6"
             value={password2}
-            onChange={e => onChange(e)}
+            onChange={(e) => onChange(e)}
           />
         </div>
         <input type="submit" className="btn btn-primary" value="Register" />
@@ -111,7 +97,13 @@ const Register = ({ setAlert }) => { // Destructuring off of props.
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired
-}
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
 
-export default connect(null, { setAlert })(Register);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);

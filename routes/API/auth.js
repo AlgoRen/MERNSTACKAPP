@@ -13,7 +13,8 @@ const User = require('../../models/User');
 router.get('/', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
-        res.json(user)
+        //* Sending user information on request to /api/auth *
+        res.json(user);
     } catch(err) {
         console.error(err.message);
         res.status(500).send('Server Error.')
@@ -37,7 +38,7 @@ async (req, res) => {
     const { email, password } = req.body;
 
     try{
-        // See if user exists
+        // See if user exists and return user information from DB.
         let user = await User.findOne({ email });
 
         if(!user) {
@@ -46,7 +47,8 @@ async (req, res) => {
             .json({ errors: [{ msg: 'Invalid credentials'}] });
         }
 
-
+        //* Checking encryped password from the database with password
+        //* sent via a req.body
         const isMatch = await bcrypt.compare(password, user.password);
 
         if(!isMatch) {
@@ -56,6 +58,7 @@ async (req, res) => {
         }
 
         // Return jsonwebtoken
+        //* Storing payload with the id found from DB *
         const payload = {
             user: {
                 id: user.id
@@ -69,12 +72,13 @@ async (req, res) => {
             { expiresIn: 360000 }, 
             (err, token) => {
                 if(err) throw err;
-                res.json({ token })
+                //* Sending auth token to /api/auth *
+                res.json({ token });
             }
             );
     } catch(err) {
         console.error(err.message);
-        res.status(500).send('Server error')
+        res.status(500).send('Server error');
         }
     }
 );

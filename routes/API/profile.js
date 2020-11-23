@@ -18,6 +18,10 @@ const User = require("../../models/User");
 // @access  Private
 router.get("/me", auth, async (req, res) => {
   try {
+    //* Creating profile object: 
+    //* By searching DB for a profile that belongs to user's id.
+    //* Populating our new profile object with the name and avatar, 
+    //* found from referencing the user model.
     const profile = await Profile.findOne({
       user: req.user.id,
     }).populate("user", ["name", "avatar"]);
@@ -25,7 +29,7 @@ router.get("/me", auth, async (req, res) => {
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
-
+    // The user's profile data will now be accessible at api/me
     res.json(profile);
   } catch (err) {
     console.error(err.message);
@@ -48,7 +52,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // ? If there are errors.
+      // If there are errors.
       return res.status(400).json({ errors: errors.array() });
     }
 
@@ -112,7 +116,6 @@ router.post(
       console.error(err.message);
       res.status(500).send("Server Error");
     }
-    // res.send("Hello");
   }
 );
 
