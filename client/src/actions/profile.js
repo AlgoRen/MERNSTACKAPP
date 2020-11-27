@@ -7,6 +7,7 @@ import { GET_PROFILE, PROFILE_ERROR } from "./types";
 
 export const getCurrentProfile = () => async (dispatch) => {
   try {
+    // Get's current user's profile from our backend that has token.
     const res = await axios.get("api/profile/me");
 
     dispatch({
