@@ -44,7 +44,7 @@ export const createProfile = (formData, history, edit = false) => async (
       type: GET_PROFILE,
       payload: res.data,
     });
-
+    // We have a css class of success that will be used for the styling of the alert.
     dispatch(setAlert(edit ? "Profile Updated" : "Profile Created", "success"));
 
     if (!edit) {
@@ -54,6 +54,7 @@ export const createProfile = (formData, history, edit = false) => async (
     const errors = err.response.data.errors;
 
     if (errors) {
+      // We have a css class of danger that will be used for the styling of the alert.
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
 
