@@ -85,7 +85,6 @@ export const addExperience = (formData, history) => async (dispatch) => {
     history.push("/dashboard");
   } catch (err) {
     const errors = err.response.data.errors;
-
     if (errors) {
       // We have a css class of danger that will be used for the styling of the alert.
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
@@ -99,7 +98,7 @@ export const addExperience = (formData, history) => async (dispatch) => {
 };
 
 // Add Education
-export const addEdcuation = (formData, history) => async (dispatch) => {
+export const addEducation = (formData, history) => async (dispatch) => {
   try {
     const config = {
       headers: {
