@@ -19,6 +19,7 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
+    // * Grabbing the user's profile from api/auth * //
     const res = await axios.get("/api/auth");
 
     dispatch({
