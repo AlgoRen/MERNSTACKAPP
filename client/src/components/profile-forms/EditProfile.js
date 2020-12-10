@@ -48,7 +48,7 @@ const EditProfile = ({
       youtube: loading || !profile.social ? "" : profile.social.youtube,
       instagram: loading || !profile.social ? "" : profile.social.instagram,
     });
-  }, [loading]); // Depends on loading state to decide when to useEffect.
+  }, [loading, getCurrentProfile, profile]); // Depends on loading state to decide when to useEffect.
   const {
     company,
     website,

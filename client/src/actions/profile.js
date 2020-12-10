@@ -1,5 +1,4 @@
 import axios from "axios";
-import { format } from "prettier";
 import { setAlert } from "./alert";
 
 import {
@@ -248,7 +247,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT Be undone!")) {
     try {
-      const res = await axios.delete(`/api/profile/`);
+      await axios.delete(`/api/profile/`);
       // Deleting account and clearing profile out of state.
       dispatch({
         type: CLEAR_PROFILE,

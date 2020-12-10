@@ -16,7 +16,7 @@ const Dashboard = ({
 }) => {
   useEffect(() => {
     getCurrentProfile();
-  }, []);
+  }, [getCurrentProfile]);
   // Using a ternary operator to load a spinner graphic while waiting for
   // loading to return back false and the profile to be loaded in
   // before running the JSX within the Dashboard component.
