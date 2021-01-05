@@ -4,6 +4,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile } from "../../actions/profile";
 
+const urlToRender = (link) => {
+  if (!link.match(/^[a-zA-Z]+:\/\//)) {
+    return "//" + link;
+  }
+  return link;
+};
+
 const CreateProfile = ({ createProfile, history }) => {
   const [formData, setFormData] = useState({
     company: "",
@@ -88,7 +95,7 @@ const CreateProfile = ({ createProfile, history }) => {
             type="text"
             placeholder="Website"
             name="website"
-            value={website}
+            value={urlToRender(website)}
             onChange={(e) => onChange(e)}
           />
           <small className="form-text">

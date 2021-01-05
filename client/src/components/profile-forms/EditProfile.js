@@ -4,6 +4,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
 
+const urlToRender = (link) => {
+  if (!link.match(/^[a-zA-Z]+:\/\//)) {
+    return "//" + link;
+  }
+  return link;
+};
+
 const EditProfile = ({
   profile: { profile, loading },
   createProfile,
@@ -48,7 +55,7 @@ const EditProfile = ({
       youtube: loading || !profile.social ? "" : profile.social.youtube,
       instagram: loading || !profile.social ? "" : profile.social.instagram,
     });
-  }, [loading, getCurrentProfile, profile]); // Depends on loading state to decide when to useEffect.
+  }, [loading, getCurrentProfile]); // Depends on loading state to decide when to useEffect.
   const {
     company,
     website,
@@ -73,7 +80,7 @@ const EditProfile = ({
   };
   return (
     <Fragment>
-      <h1 className="large text-primary">Create Your Profile</h1>
+      <h1 className="large text-primary">Edit Your Profile</h1>
       <p className="lead">
         <i className="fas fa-user">
           {" "}

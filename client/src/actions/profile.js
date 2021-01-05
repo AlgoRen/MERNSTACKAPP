@@ -9,6 +9,7 @@ import {
   CLEAR_PROFILE,
   DELETE_ACCOUNT,
   GET_REPOS,
+  CLEAR_REPOS,
 } from "./types";
 
 // Get current users profile
@@ -68,15 +69,24 @@ export const getProfileById = (userId) => async (dispatch) => {
 
 // Get Github repos
 export const getGithubRepos = (username) => async (dispatch) => {
+  console.log(username, " action check");
   try {
     // Get's users Github repos.
     const res = await axios.get(`/api/profile/github/${username}`);
+    console.log("Res status: ", res);
 
     dispatch({
       type: GET_REPOS,
       payload: res.data,
     });
   } catch (err) {
+    console.log(err.response.status);
+    if (err.response.status === 404) {
+      dispatch({
+        type: CLEAR_REPOS,
+      });
+      return;
+    }
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
