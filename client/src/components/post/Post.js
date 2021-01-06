@@ -10,6 +10,7 @@ const Post = ({ getPost, post: { post, loading }, match }) => {
   }, [getPost]);
 
   return <div>Post</div>;
+  //   Testing...
 };
 
 Post.propTypes = {
