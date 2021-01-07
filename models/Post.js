@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const PostSchema = new Schema({
@@ -37,6 +37,9 @@ const PostSchema = new Schema({
       name: {
         type: String,
       },
+      avatar: {
+        type: String,
+      },
       date: {
         type: Date,
         default: Date.now,
@@ -49,4 +52,4 @@ const PostSchema = new Schema({
   },
 });
 
-module.exports = Post = mongoose.model('post', PostSchema);
+module.exports = Post = mongoose.model("post", PostSchema);
