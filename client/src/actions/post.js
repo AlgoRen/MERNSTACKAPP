@@ -12,6 +12,47 @@ import {
   DELETE_COMMENT,
 } from "./types";
 
+// Purpose:
+//    1) To handle all the application actions that will make a request to "/api/posts".
+// The actions that a user may trigger are getting all posts, adding a like, removing a like,
+// deleting a post, adding a post, getting a single post, adding a comment, and deleting a comment.
+//    2) To update the state of the application, if you arent already aware, we are using Redux.
+// All the states that are being updated in this file are found in reducers/post.js
+
+// How it works:
+//    1) The getPosts function makes a GET request to "/api/posts". If successful it will dispatch
+// "GET_POSTS" and send the returned data found in res.data as a payload to be handled by the
+// "GET_POSTS" reducer else dispatches POST_ERROR with the error status and error message returned by
+// "/api/posts" as the payload.
+//    2) The addLike function takes in a postId and makes a PUT request to "/api/posts/like/:postId"
+// where :postId equals the passed in postId value. If successful it will dispatch "UPDATE_LIKES"
+// and send the returned data found in res.data as a likes array and the postId as a payload to be
+// handled by the "UPDATE_LIKES" reducer else dispatches POST_ERROR.
+//    3) The removeLike function takes in a postId and makes a PUT request to "/api/posts/unlike/:postId".
+// If successful it will dispatch "UPDATE_LIKES" and send the likes array and postId as a payload to be
+// handled by the "UPDATE_LIKES" reducer else dispatches POST_ERROR.
+//    4) The deletePost function takes in a postId and makes a DELETE request to "/api/posts/:postId".
+// If successful it will dispatch "DELETE_POST" with postId as a payload to be handled by the
+// "DELETE_POST" reducer and then will dispatch a setAlert action with "Post Removed" as its message.
+// If unsuccessful it will dispatch "POST_ERROR" with msg and status as its payload.
+//    5) The addPost function takes in an object named formData and creates a config object
+// with the neccessary headers for making a POST request to "/api/posts" sending with it the
+// config and formData objects. If successful it will dispatch "ADD_POST" with res.data as a payload
+// to be handled by the "ADD_POST" reducer and then will dispatch a setAlert action with "Post Added"
+// as its message. If unsuccessful it will dispatch "POST_ERROR".
+//    6) The getpost function (for single post) takes in a id and makes a GET request to "/api/posts/:id".
+// If successful it will dispatch "GET_POST" with res.data as a payload to be handled by the "GET_POST"
+// reducer. If unsuccessful it will dispatch "POST_ERROR".
+//    7) The addComment function takes in a postId and an object named formData. Creates a config object
+// with the necessary headers for making a POST request to "/api/posts/comment/:postId/" sending with it
+// the config and formData objects. If successful it will dispatch "ADD_COMMENT" with res.data as a payload
+// to be handled by the "ADD_COMMENT" reducer and then will dispatch a setAlert action with "Comment Added"
+// as its message. If unsuccessful it will dispatch "POST_ERROR".
+//    8) The deleteComment function takes in a postId and a commentId, and makes a DELETE request to
+// "/api/posts/comment/:postId/:commentId". If successful it will dispatch "DELETE_COMMENT" with commentId
+// as a payload to be handled by the "DELETE_COMMENT" reducer and then will dispatch a setAlert action
+// with "Comment Removed" as its message. If unsuccessful it will dispatch "POST_ERROR".
+
 // Get posts
 export const getPosts = () => async (dispatch) => {
   try {

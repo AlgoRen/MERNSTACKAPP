@@ -26,7 +26,7 @@ import setAuthToken from "../utils/setAuthToken";
 
 // How it works:
 //    1) The loadUser function makes a GET request to "/api/auth" if successful it will dispatch "USER_LOADED"
-// and send the returned data as a payload to be stored in auth state else dispatches AUTH_ERROR.
+// and send the returned data as a payload to be handeled by USER_LOADED reducer else dispatches AUTH_ERROR.
 //    2) The register function makes a POST request to "/api/users" with the config object and form data.
 // If request is successful then "REGISTER_SUCCESS" will be dispatched along with loadUser action.
 // Else user will be presented with an alert message displaying the error and "REGISTER_FAIL" will be dispatched.
