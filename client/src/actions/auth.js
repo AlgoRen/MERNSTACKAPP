@@ -12,21 +12,30 @@ import {
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
-// Purpose: 1) To identify a user based on the setAuthToken to decide if user's
-// profile content should be loaded or if an error should occur where they are asked
-// to register or login. 2) To create an action that registers a user by sending the appropiate
-// data to the back-end for account creation. 3) To create an action that logins a user by sending
-// the email and password to the back-end for validation. 4) To create an action that clears
-// the approiate data from the application state and logs the user out.
+// Purpose:
+//    1) To identify if a token is stored in localStorage, if true,
+// the token gets sent to setAuthToken. Sends a request to "/api/auth" to check the
+// token to determine if it is valid. If the request is successful "USER_LOADED"
+// state is updated. Else "AUTH_ERROR" state is dispatched.
+//    2) To create an action that registers a user by sending the appropiate data
+// to the back-end for account creation.
+//    3) To create an action that logins a user by sending the email and password
+// to the back-end for validation.
+//    4) To create an action that clears the approiate data from the application state
+// and logs the user out.
 
-// How it works: 1) Makes a request to "/api/auth" if successful it will dispatch "USER_LOADED"
+// How it works:
+//    1) The loadUser function makes a GET request to "/api/auth" if successful it will dispatch "USER_LOADED"
 // and send the returned data as a payload to be stored in auth state else dispatches AUTH_ERROR.
-// 2) Makes a request to "/api/users" with the necessary header and form data.
+//    2) The register function makes a POST request to "/api/users" with the config object and form data.
 // If request is successful then "REGISTER_SUCCESS" will be dispatched along with loadUser action.
-// Else user will be an alert message displaying the error and "REGISTER_FAIL" will be dispatched.
-// 3) An config object is created with the needed headers for making a post request to the back-end.
-// The form data that was sent over is stored in JSON object called body and a post request is sent to
-// "/api/auth" with the config object and the body JSON object.
+// Else user will be presented with an alert message displaying the error and "REGISTER_FAIL" will be dispatched.
+//    3) For both register and login function a config object is created with the needed headers
+// for making a post request to the back-end.
+//    4) The login function makes a POST request to "/api/auth" with the config object and form data.
+// If request is succesful then "LOGIN_SUCCESS" will be dispatched along with loadUser action.
+// Else user will be presented with an alert message displaying the error and "LOGIN_FAIL" will be dispatched.
+//    5) The logout function dispatches "CLEARPROFILE" and "LOGOUT"
 
 // Load User
 export const loadUser = () => async (dispatch) => {
