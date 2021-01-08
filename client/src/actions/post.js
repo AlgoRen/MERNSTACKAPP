@@ -17,7 +17,7 @@ import {
 // The actions that a user may trigger are getting all posts, adding a like, removing a like,
 // deleting a post, adding a post, getting a single post, adding a comment, and deleting a comment.
 //    2) To update the state of the application, if you arent already aware, we are using Redux.
-// All the states that are being updated in this file are found in reducers/post.js
+// All the states that are being updated in this file are found in reducers/post.js.
 
 // How it works:
 //    1) The getPosts function makes a GET request to "/api/posts". If successful it will dispatch
@@ -40,7 +40,7 @@ import {
 // config and formData objects. If successful it will dispatch "ADD_POST" with res.data as a payload
 // to be handled by the "ADD_POST" reducer and then will dispatch a setAlert action with "Post Added"
 // as its message. If unsuccessful it will dispatch "POST_ERROR".
-//    6) The getpost function (for single post) takes in a id and makes a GET request to "/api/posts/:id".
+//    6) The getPost function (for single post) takes in a id and makes a GET request to "/api/posts/:id".
 // If successful it will dispatch "GET_POST" with res.data as a payload to be handled by the "GET_POST"
 // reducer. If unsuccessful it will dispatch "POST_ERROR".
 //    7) The addComment function takes in a postId and an object named formData. Creates a config object
