@@ -8,6 +8,10 @@ import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
 import Education from "./Education";
 
+// Purpose:
+
+// How it works:
+
 const Dashboard = ({
   deleteAccount,
   getCurrentProfile,
