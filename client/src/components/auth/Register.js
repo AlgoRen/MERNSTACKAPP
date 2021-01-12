@@ -43,6 +43,7 @@ import PropTypes from "prop-types";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   // Destructuring off of props.
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",

@@ -1,6 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// Purpose:
+//    1) To provide links to the appropriate routes to edit profile, add experience, or add education.
+
+// How it works:
+//    1) Takes in no parameters and returns a div of Link tags. Link is a function that we import from
+// react-router-dom. (Not much else to say?)
+//    2) Here is some docs on Link if you are unsure of how it works: https://reactrouter.com/web/api/Link
+
 const DashboardActions = () => {
   return (
     <div className="dash-buttons">

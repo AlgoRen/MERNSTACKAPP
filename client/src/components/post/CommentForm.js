@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addComment } from "../../actions/post";
 
+// Purpose:
+
+// How it works:
+
 const CommentForm = ({ postId, addComment }) => {
   const [text, setText] = useState("");
   return (
