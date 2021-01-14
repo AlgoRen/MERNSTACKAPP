@@ -2,8 +2,17 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
 // Purpose:
+//    1) To display the user's name, bio, and skills.
 
 // How it works:
+//    1) The ProfileAbout function takes in bio, skills, and user that is deconstructed off of the profile
+// state. name is further deconstructed off of user.
+//    2) The ProfileAbout function returns a div containing a Fragment with a h2 tag set to the value of user's
+// first name (using the trim method and splitting it on the first occurance of a space to get only the first name)
+// and a p tag containing the bio of that user.
+//    3) In a div a JSX function contains a map function attached to the skills array that takes in a single instance,
+// skill, and index. The map function returns a div, with property named key set to index, containing the value of skill.
+//    4) The profile state is set to a required object in Profile.propTypes.
 
 const ProfileAbout = ({
   profile: {

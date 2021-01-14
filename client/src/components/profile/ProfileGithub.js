@@ -4,6 +4,20 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getGithubRepos } from "../../actions/profile";
 
+// Purpose:
+//    1) To display five Github repos that belongs to the username the user entered on their profile.
+//    2) To display the name, description, the star gazer count, the repo watch count, and the fork count
+// for each of the five repos.
+
+// How it works:
+//   1) The ProfileGithub function takes in username prop, the getGithubRepos action, and the repos state
+// as its parameters.
+//   2) The useEffect hook is called that executes the getGithubRepos action with username as its parameter,
+// using getGitHubRepos as its dependency.
+//    3) The ProfileGithub function returns a div that contains h2 tag saying Github Repos and either a h4 tag
+// saying No github profile found or a div containing the five repos for that user's entered username.
+//    4)
+
 const ProfileGithub = ({ username, getGithubRepos, repos }) => {
   useEffect(() => {
     getGithubRepos(username);
