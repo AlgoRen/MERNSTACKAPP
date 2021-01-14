@@ -5,6 +5,39 @@ import Moment from "react-moment";
 import { connect } from "react-redux";
 import { addLike, removeLike, deletePost } from "../../actions/post";
 
+// Purpose:
+//    1) To allow users to see the individual posts including who it was posted by on the posts page.
+//    2) To allow users to like, dislike, and delete post if the post was made by that user.
+
+// How it works:
+//    1) The PostItem function takes in addLike, removeLike, and deletePost actions from the actions/post
+// folder. The auth state and _id, text, name, avatar, user, likes, comments, date are deconstructed off
+// of the post state and brought in as parameters. The showActions default prop is also brought into
+// the PostItem function as a parameter.
+//    2) The PostItem function returns a div containing a Link fragment, a p tag with the text and date,
+// and a Fragment containing actions a user can do.
+//    3) The Link fragment provides a link to the users profile by linking to `/profile/:user` where
+// :user equals the value of user brought in from the deconstructed state of post.
+//    4) The text state is displayed in a p tag using JSX. The date state is displayed in a Moment fragment
+// with the format YYYY/MM/DD.
+//    5) The showActions state is called in a JSX function if showActions is true it returns a Fragment
+// (which it is as its currently set to true in this file, see PostItem.defaultProps).
+//    6) The Fragment contains a button with a onClick property that has the value of an anonymous function
+// calling the addLike function with _id as its parameter, an icon with a thumbs up symbol is displayed in a
+// i tag, and underneth that is a JSX function that checks to see if the likes array is longer than 0
+// if it is then it returns a span tag with the likes.length value.
+//    7) The Fragment contains another button with a onClick property that has the value of an anonymous
+// function calling the removeLike funciton with _id as its parameter, an icon with thumbs down symbol is
+// displayed in a i tag.
+//    8) The Fragment contains a Link fragment that provides a link to that post's page by directing to
+// `posts/:_id where :_id is the _id value of that post. A JSX function checks to see if the comments
+// array length is greater than 0 and if true returns a span of containing the value of comments.length
+//    9) Using JSX if auth.loading is false and user equals auth.user._id then a button tag is returned
+// that has an onClick property that is assigned to an anonymous function, passing in e, and calling
+// deletePost with _id as its parameters.
+//    10) The addLike, removeLike, and deletePost actions are defined as required functions in
+// PostItem.propTypes. The post and auth state are defined as required objects.
+
 const PostItem = ({
   addLike,
   removeLike,

@@ -1,6 +1,10 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
+// Purpose:
+
+// How it works:
+
 const ProfileAbout = ({
   profile: {
     bio,

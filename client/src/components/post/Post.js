@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 // Purpose:
 //    1) To display an individual page for posts that consist of the post, comment form, and all
 // comments left under the post.
+
 // How it works:
 //    1) The Post function takes in getPost and match, along with post and loading that is deconstructed
 // off of the post object.

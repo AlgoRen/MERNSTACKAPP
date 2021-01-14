@@ -20,8 +20,8 @@ import { deleteComment } from "../../actions/post";
 // of the user is displayed from 'avatar' and along with the name in a h4 tag using JSX.
 //    4) The div that contains the comment information displays the text using the 'text' parameter via JSX.
 //    5) The Moment fragment is used to display 'date' witht he format YYYY/MM/DD
-//    6) Using JSX if auth.loading is false and user equals auth.user._id then a componenet is returned containing
-// a button tag that has an onClick property that is assigned to an anonymous function, passing in e, and calling
+//    6) Using JSX if auth.loading is false and user equals auth.user._id then a button tag is returned
+// that has an onClick property that is assigned to an anonymous function, passing in e, and calling
 // deleteComment with postId and _id as its parameters.
 //    7) postId, comment, auth, and deleteComment are defined in CommentItem.propTypes. postId is defined as
 // a required string, comment and auth is defined as a required object, and deleteComment is defined as a required
