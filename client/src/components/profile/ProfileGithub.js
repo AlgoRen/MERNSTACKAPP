@@ -5,8 +5,8 @@ import Spinner from "../layout/Spinner";
 import { getGithubRepos } from "../../actions/profile";
 
 // Purpose:
-//    1) To display five Github repos that belongs to the username the user entered on their profile.
-//    2) To display the name, description, the star gazer count, the repo watch count, and the fork count
+//    1) To display five Github repos that belong to the username the user entered on their profile.
+//    2) To display the name, description, the stargazer count, the repo watch count, and the fork count
 // for each of the five repos.
 
 // How it works:
@@ -14,9 +14,16 @@ import { getGithubRepos } from "../../actions/profile";
 // as its parameters.
 //   2) The useEffect hook is called that executes the getGithubRepos action with username as its parameter,
 // using getGitHubRepos as its dependency.
-//    3) The ProfileGithub function returns a div that contains h2 tag saying Github Repos and either a h4 tag
-// saying No github profile found or a div containing the five repos for that user's entered username.
-//    4)
+//    3) The ProfileGithub function returns a div that contains h2 tag saying Github Repos and either an h4 tag
+// saying No GitHub profile found or a div containing the five repos for that user's entered username.
+//    4) A map function is called on the repos array, and a single instance, repo, is passed in as a parameter.
+// A div is created with the property of key and given the value of repo._id, an a tag inside of a h4 tag
+// has a property of href with the value of repo.html_url and displays repo.name. A p tag displays repo.description.
+// Li tags are made for Stars, Watchers, and Forks, displaying the values of repo.stargazers_count,
+// repo.watchers_count, and repo.forks_count, respectively.
+//    5) The getGithubRepos actions is defined as a required object in ProfileGithub.propTypes. The repos state
+// is defined as a required array, and the username prop is defined as a required object.
+//    6) mapStateToProps defines repos using state.profile.repos
 
 const ProfileGithub = ({ username, getGithubRepos, repos }) => {
   useEffect(() => {
@@ -27,7 +34,7 @@ const ProfileGithub = ({ username, getGithubRepos, repos }) => {
       <h2 className="text-primary my-1">Github Repos</h2>
       {repos === null ? (
         // <Spinner />
-        <h4>No github profile found</h4>
+        <h4>No GitHub profile found</h4>
       ) : (
         repos.map((repo) => (
           <div key={repo._id} className="repo bg-white p-1 my-1">

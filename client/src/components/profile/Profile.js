@@ -23,19 +23,19 @@ import { getProfileById } from "../../actions/profile";
 // getProfileById action with match.params.id as a parameter, using getProfileById and match.params.id as
 // its dependencies.
 //    3) The Profile function returns a Fragment containing either a fragment named Spinner or another
-// Fragment. If the profile state equals null or loading equals a truth value the Profile function will
+// Fragment. If the profile state equals null or loading equals a truth value, the Profile function will
 // return Spinner, else it will return another Fragment.
-//    4) The fragment Profile function will return, if profile does NOT equal null and loading state contains
-// a false value, is the following: A Link fragment that takes a user to the route /profiles, a Link fragment
+//    4) The fragment Profile function will return if profile does NOT equal null and loading state contains
+// a false value is the following: A Link fragment that takes a user to the route /profiles, a Link fragment
 // that takes a user to the /edit-profile route, ProfileTop, ProfileAbout, ProfileExperience, ProfileEducation,
 // and ProfileGithub fragments.
-//    5) For the Link fragment that will take a user to the /edit-profile route the following has to happen.
+//    5) For the Link fragment that will take a user to the /edit-profile route, the following has to happen.
 // First, the auth.isAuthenticated state needs to bet set to a truth value. Two, the auth.loading state needs
 // to equal false. Three, auth.user._id needs to equal profile.user._id, only when all three of these conditions
 // are met will a user be shown the Edit Profile button.
 //    6) The ProfileTop and ProfileAbout fragments have props named profile that is set to the profile state.
-//    7) For the both of the fragments containing ProfileExperience and ProfileEducation to be displayed
-// the length of their array must be greater than 0, this array is found with profile.experience.length or
+//    7) For both of the fragments containing ProfileExperience and ProfileEducation to be displayed
+// the length of their array must be greater than 0. This array is found with profile.experience.length or
 // profile.education.length.
 //    8) Both ProfileExperience and ProfileEducation fragments are returned via a map function on the arrays
 // of profile.experience and profile.education. The map function takes in a single instance, experience, and
