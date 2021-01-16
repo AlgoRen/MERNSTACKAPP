@@ -12,7 +12,7 @@ import { createProfile, getCurrentProfile } from "../../actions/profile";
 // state, createProfile and getCurrentProfile actions, and the history prop.
 //     2) The EditProfile function calls a useState hook passing in false and deconstructs a boolean
 // called toDateDisabled and a function named toggleDisabled off of the useState.
-//     3) The EditProfile function calls a useState hook that calls the getCurrentProfile action that updates
+//     3) The EditProfile function calls a useEffect hook that calls the getCurrentProfile action that updates
 // the profile state. We then call setFormData to set the formData. If the following state is loading or the
 // property on the profile object does not exist we are then setting the property to an empty string,
 // else we are setting the property to what we find on the profile state. The useState hook has loading
