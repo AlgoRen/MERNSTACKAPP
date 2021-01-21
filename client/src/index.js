@@ -3,6 +3,20 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Purpose:
+//    1) To load the React application as a fragment.
+//    2) To render the React application and attach it to the div with the Id of the root in the 
+// index.html file within the public directory. 
+//    3) To run reportWebVitals.
+
+// How it works:
+//    1) The render method is called on the ReactDOM package. The render method takes in the fragment
+// React.StrictMode and within it our imported App function as a fragment.
+//    2) The React.StrictMode fragment element is then supplied/ attached to the div element with an id of
+// root that acts as the React applications container. Our website is now a working React application 
+// that now only updates the appropriate container node's children versus the entire node on every state change.
+//    3) Calls the function reportWebVitals.
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
