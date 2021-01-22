@@ -15,12 +15,12 @@ const Schema = mongoose.Schema;
 //    5) The new Schema object includes the property avatar that is defined as an object with the property type set
 // to String.
 //    6) The new Schema object includes the property likes that is defined as an array with an object containing 
-// user which is then defined as an object with the property type set to Schema.Types.ObjectId and ref property 
-// set to the string "user". 
+// the property user, which is then defined as an object with the property type set to Schema.Types.ObjectId and ref 
+// property set to the string "user". 
 //    7) The new Schema object includes the property comments that is defined as an array with an object
-// containing: user which is then defined as an object with the property type set to Schema.Types.ObjectId
+// containing: user, which is then defined as an object with the property type set to Schema.Types.ObjectId
 // and ref property set to the string "user", text which is defined as an object with the property type set to 
-// String and the property required set to the boolean true, name which is defined as an object with property
+// String and the property required set to the boolean true, name which is defined as an object with a property
 // type set to String, avatar which is defined as an object with property type set to String, and date which is 
 // defined as an object with property type set to Date and the property default set to Date.now.
 //    8) The new Schema object includes the property date that is defined as an object with the property type
