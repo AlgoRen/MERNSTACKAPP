@@ -8,15 +8,15 @@ const { check, validationResult } = require("express-validator");
 const User = require("../../models/User");
 
 // Purpose:
-//    1) To handle GET request to "/"
-//    2) To handle POST request to "/"
+//    1) To handle GET request to "/api/auth" that come from the auth action file.
+//    2) To handle POST request to "/api/auth" that come from the auth action file.
 
 // How it works:
 //    1) The GET method is attached to the router instance, also known as a mini-app, that passes in the route
-// "/", the function auth, and a async function that passes in req, res objects.
-//    2) The GET method ran on the router instance loads a try-catch statement.
-//    3) The try block creates a constant with the name user that assigns the result of an await call, using 
-// mongoose to query the database, using the findById method on the User model. The findById method takes in 
+// "/", the function auth, and a async callback function that passes in req, res objects.
+//    2) The GET method ran on the router instance loads a try-catch statement within the async callback function.
+//    3) The try block creates a constant with the name user that assigns the result of an await call, with the 
+// use of mongoose to query the database, using the findById method on the User model. The findById method takes in 
 // the parameter req.user.id, attaches the select method, and passes in "-password" to omit the password field.
 // The result of user is then passed in as parameter into res.json that will send it to the action that made
 // the request.

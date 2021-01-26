@@ -70,7 +70,6 @@ export const register = ({ name, email, password }) => async (dispatch) => {
   // Make a request to /api/users route and check to see what we get.
   try {
     const res = await axios.post("/api/users", body, config);
-    console.log("/api/users res.data: ", res.data);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: res.data,
@@ -102,7 +101,6 @@ export const login = (email, password) => async (dispatch) => {
   // Make a request to /api/users route and check to see what we get.
   try {
     const res = await axios.post("/api/auth", body, config);
-    console.log("/api/auth res.data: ", res.data);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
