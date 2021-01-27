@@ -14,6 +14,10 @@ const Post = require("../../models/Post");
 // TODO: Should delete later.
 // ! Better Comments GG.
 
+// Purpose:
+
+// How it works:
+
 // @route   GET API/profile/me
 // @desc    Get current users profile
 // @access  Private
