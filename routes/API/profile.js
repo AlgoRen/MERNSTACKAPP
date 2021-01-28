@@ -176,6 +176,8 @@ const Post = require("../../models/Post");
 // An if statement checks response.statusCode for a value that does NOT equal 200, if true, then the if statement returns a status 
 // of 404 with res.status and the message "No Github profile found." with an attached json method. Lastly, res.json is called with
 // JSON.parse(body) as its parameter that parses the returned body before sending it to the action that called the api request.
+// The catch block takes in error, as err, and passes in the error message into console.error. A status of 500 is 
+// sent via res.status and attaches the message "Server Error" using the send method.
 
 // @route   GET API/profile/me
 // @desc    Get current users profile
