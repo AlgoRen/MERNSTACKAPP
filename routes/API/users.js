@@ -8,6 +8,11 @@ const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
 
+// Purpose:
+
+// How it works:
+
+
 // @route   POST API/users
 // @desc    Register user
 // @access  Public

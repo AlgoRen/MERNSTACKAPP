@@ -8,14 +8,14 @@ const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 
 // Purpose:
-// To handle POST request to "/api/posts" that comes from the post action file.
-// To handle GET request to "/api/posts" that comes from the post action file.
-// To handle GET request to "/api/posts/:id" that comes from the post action file.
-// To handle DELETE request to "/api/posts/:id" that comes from the post action file.
-// To handle PUT request to "/api/posts/like/:id" that comes from the post action file.
-// To handle PUT request to "/api/posts/unlike/:id" that comes from the post action file.
-// To handle POST request to "/api/posts/comment/:id" that comes from the post action file.
-// To handle DELETE request to "/api/posts/comment/:id/:commentId" that comes from the post action file.
+//    1) To handle POST request to "/api/posts" that comes from the post action file.
+//    2) To handle GET request to "/api/posts" that comes from the post action file.
+//    3) To handle GET request to "/api/posts/:id" that comes from the post action file.
+//    4) To handle DELETE request to "/api/posts/:id" that comes from the post action file.
+//    5) To handle PUT request to "/api/posts/like/:id" that comes from the post action file.
+//    6) To handle PUT request to "/api/posts/unlike/:id" that comes from the post action file.
+//    7) To handle POST request to "/api/posts/comment/:id" that comes from the post action file.
+//    8) To handle DELETE request to "/api/posts/comment/:id/:commentId" that comes from the post action file.
 
 // How it works:
 //    1) The POST method is attached to the router instance, also known as a mini-app, that passes in the route
