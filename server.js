@@ -15,10 +15,10 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // Define Routes
-app.use("/API/users", require("./routes/api/users"));
-app.use("/API/auth", require("./routes/api/auth"));
-app.use("/API/profile", require("./routes/api/profile"));
-app.use("/API/posts", require("./routes/api/posts"));
+app.use("/API/users", require("./routes/API/users"));
+app.use("/API/auth", require("./routes/API/auth"));
+app.use("/API/profile", require("./routes/API/profile"));
+app.use("/API/posts", require("./routes/API/posts"));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
