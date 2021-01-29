@@ -16,7 +16,7 @@ app.use(express.json({ extended: false }));
 
 //routes
 
-require("./routes")(app);
+// require("./routes")(app);
 
 // Define Routes
 app.use("/API/users", require("./routes/API/users"));
