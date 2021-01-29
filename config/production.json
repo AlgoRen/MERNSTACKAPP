@@ -1,0 +1,7 @@
+{
+    "mongoURI": "mongodb+srv://K96cIWWTeC0hMoP1:K96cIWWTeC0hMoP1@zbk-mvp-cluster.gzrjp.mongodb.net/MERNSTACKAPP?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken",
+    "githubClientId": "d8defe9b723ba4f4a375",
+    "githubSecret": "f054e0bbad8a496c348779ca3684c795cb0ec385",
+    "githubToken": "cacc98e006f7156a8864ddf325d0279dba687cf4"
+}
