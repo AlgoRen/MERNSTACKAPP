@@ -7,15 +7,15 @@ const { remove } = require("../../models/Profile");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 
-// Purpose:
-//    1) To handle POST request to "/api/posts" that comes from the post action file.
-//    2) To handle GET request to "/api/posts" that comes from the post action file.
-//    3) To handle GET request to "/api/posts/:id" that comes from the post action file.
-//    4) To handle DELETE request to "/api/posts/:id" that comes from the post action file.
-//    5) To handle PUT request to "/api/posts/like/:id" that comes from the post action file.
-//    6) To handle PUT request to "/api/posts/unlike/:id" that comes from the post action file.
-//    7) To handle POST request to "/api/posts/comment/:id" that comes from the post action file.
-//    8) To handle DELETE request to "/api/posts/comment/:id/:commentId" that comes from the post action file.
+//TODO Purpose:
+//TODO    1) To handle POST request to "/api/posts" that comes from the post action file.
+//TODO    2) To handle GET request to "/api/posts" that comes from the post action file.
+//TODO    3) To handle GET request to "/api/posts/:id" that comes from the post action file.
+//TODO    4) To handle DELETE request to "/api/posts/:id" that comes from the post action file.
+//TODO    5) To handle PUT request to "/api/posts/like/:id" that comes from the post action file.
+//TODO    6) To handle PUT request to "/api/posts/unlike/:id" that comes from the post action file.
+//TODO    7) To handle POST request to "/api/posts/comment/:id" that comes from the post action file.
+//TODO    8) To handle DELETE request to "/api/posts/comment/:id/:commentId" that comes from the post action file.
 
 // How it works:
 //    1) The POST method is attached to the router instance, also known as a mini-app, that passes in the route
@@ -29,7 +29,7 @@ const User = require("../../models/User");
 // the req object as a parameter. An if statement checks the truth value of the constant errors not being empty, 
 // meaning errors do exist. The if statement then returns a status 400 and a JSON object containing the array 
 // of errors. 
-//    2) The async function loads a try-catch statement. 
+//?    2) The async function loads a try-catch statement. 
 //    3) The try block creates a constant with the name user and assigns the result of an await call, with the 
 // use of mongoose to query the database, using the findById method on the User model. The findById method takes in 
 // the parameter req.user.id attaches the select method and passes in "-password" to omit the password field.
@@ -39,15 +39,15 @@ const User = require("../../models/User");
 // post is then passed in as a parameter into res.json that will send it to the action that made the request. The catch 
 // block takes in error, as err, and passes in the error message into console.error. A status of 500 is sent via 
 // res.status and attaches the message "Server Error" using the send method.
-//    4) The GET method is attached to the router instance, passes in the route "/", auth middleware, and an async
-// callback function. The async function takes in req and res as parameters. Inside the async function, a try-catch
-// statement is called. The try block creates a constant with the name posts and assigns the result of an await
-// call, to query the database, using the find method on the Post model. The find method takes in no parameters.
-// A sort method takes in an object containing the property date with the value -1; this is done to order the 
-// results by descending order as a parameter and is attached to the empty find method. The result of posts 
-// is then passed in as a parameter into res.json that will send it to the action that made the request. The catch 
-// block takes in error, as err, and passes in the error message into console.error. A status of 500 is sent via 
-// res.status and attaches the message "Server Error" using the send method.
+//?    4) The GET method is attached to the router instance, passes in the route "/", auth middleware, and an async
+//? callback function. The async function takes in req and res as parameters. Inside the async function, a try-catch
+//? statement is called. The try block creates a constant with the name posts and assigns the result of an await
+//? call, to query the database, using the find method on the Post model. The find method takes in no parameters.
+//? A sort method takes in an object containing the property date with the value -1; this is done to order the 
+//? results by descending order as a parameter and is attached to the empty find method. The result of posts 
+//? is then passed in as a parameter into res.json that will send it to the action that made the request. The catch 
+//? block takes in error, as err, and passes in the error message into console.error. A status of 500 is sent via 
+//? res.status and attaches the message "Server Error" using the send method.
 //    5) The GET method is attached to the router instance, passes in the route "/:id", auth middleware, and a
 // async callback function. The async function takes in req and res as parameters. Inside the async function a
 // try-catch statement is called. The try block creates a constant with the name post and assigns the result 
@@ -60,22 +60,22 @@ const User = require("../../models/User");
 // met then the if statement returns a status 404 and attaches the message "Post not found" using the json method.
 // If the if statement condition is not met, then the status of 500 is sent via res.status and attaches the message 
 // "Server Error" using the send method.
-//    6) The DELETE method is attached to the router instance, passes in the route "/:id", auth middleware, and a
-// async callback function. The async function takes in req and res as parameters. Inside the async function a
-// try-catch statement is called. The try block creates a constant with the name post and assigns the result of
-// an await call to query the database using the findById method on the Post model. The findById method takes 
-// in the parameter req.params.id. A sort method takes in an object containing the property date with the value -1 
-// as a parameter and is attached to the findById method. An if statement checks to see if the constant post has 
-// a falsey value. If so, the if statement then returns a status 404 and attaches the message "Post not found" 
-// using the json method. An if statement checks to see if the value of post.user after the toString method is
-// ran on it does NOT equal the value of req.user.id. If this condition is met, the if statement then returns a 
-// status 401 and attaches the message "User not authorized" using the json method. An await call awaits the 
-// response from the save method that runs on post, which uses mongoose to remove the selected document from
-// the post collection. A message of "Post removed" is sent with res.json. The catch block takes in error, as err, 
-// and passes in the error message into console.error. An if statement checks err.kind for a value that strictly 
-// equals the string "ObjectId" if the condition is met, then the if statement returns a status 404 and attaches 
-// the message "Post not found" using the json method. If the if statement condition is not met, the status of 
-// 500 is sent via res.status and attaches the message "Server Error" using the send method.
+//?    6) The DELETE method is attached to the router instance, passes in the route "/:id", auth middleware, and a
+//? async callback function. The async function takes in req and res as parameters. Inside the async function a
+//? try-catch statement is called. The try block creates a constant with the name post and assigns the result of
+//? an await call to query the database using the findById method on the Post model. The findById method takes 
+//? in the parameter req.params.id. A sort method takes in an object containing the property date with the value -1 
+//? as a parameter and is attached to the findById method. An if statement checks to see if the constant post has 
+//? a falsey value. If so, the if statement then returns a status 404 and attaches the message "Post not found" 
+//? using the json method. An if statement checks to see if the value of post.user after the toString method is
+//? ran on it does NOT equal the value of req.user.id. If this condition is met, the if statement then returns a 
+//? status 401 and attaches the message "User not authorized" using the json method. An await call awaits the 
+//? response from the save method that runs on post, which uses mongoose to remove the selected document from
+//? the post collection. A message of "Post removed" is sent with res.json. The catch block takes in error, as err, 
+//? and passes in the error message into console.error. An if statement checks err.kind for a value that strictly 
+//? equals the string "ObjectId" if the condition is met, then the if statement returns a status 404 and attaches 
+//? the message "Post not found" using the json method. If the if statement condition is not met, the status of 
+//? 500 is sent via res.status and attaches the message "Server Error" using the send method.
 //    7) The PUT method is attached to the router instance, passes in the route "/like/:id", auth middleware,
 // and an async callback function. The async function takes in req and res as parameters. Inside the async function
 // a try-catch statement is called. The try block creates a constant with the name post and assigns the result
@@ -90,24 +90,24 @@ const User = require("../../models/User");
 // to update the document in the post collection. A res.json is called with post.likes as its parameter. The 
 // catch block takes in error, as err, and passes in the error message into console.error. A status of 500 is 
 // sent via res.status and attaches the message "Server Error" using the send method.
-//    8) The PUT method is attached to the router instance, passes in the route "/unlike/:id", auth middleware,
-// and an async callback function. The async function takes in req and res as parameters. Inside the async function
-// a try-catch statement is called. The try block creates a constant with the name post and assigns the result
-// of an await call to query the database using the findById method on the Post model. The findById method takes
-// in the parameter req.params.id. An if statement checks to see if the length of the result of a filter method ran on 
-// post.likes is strictly equal to 0. The filter method takes in a single instance, like, runs the toString method
-// on likes.user checking to see if it is strictly equal to req.user.id, if there are no conditions that match, the 
-// filter method will be returned with an array length of 0. The if statement returns a status 400 and attaches the 
-// message "Post has not yet been liked" using the json method. A constant with the name removeIndex is assigned to
-// the result of the map method followed by the result of the indexOf method that is attached to post.likes. First,
-// the map method takes in a single instance, like, and runs the toString method on like.user returning the post.likes 
-// array with the user property in string form, which allows for indexOf method to search through the new array
-// looking for the value that equals req.user.id, returns that index position, and stores it in the removeIndex constant.
-// The splice method is called on post.likes. The splice method takes in the parameters removeIndex and 1, respectively,
-// which removes that like from the array. An await call awaits the response from the save method that runs on post, 
-// which uses mongoose to update the document in the post collection. A res.json is called with post.likes as its parameter. 
-// The catch block takes in error, as err, and passes in the error message into console.error. A status of 500 is 
-// sent via res.status and attaches the message "Server Error" using the send method.
+//?    8) The PUT method is attached to the router instance, passes in the route "/unlike/:id", auth middleware,
+//? and an async callback function. The async function takes in req and res as parameters. Inside the async function
+//? a try-catch statement is called. The try block creates a constant with the name post and assigns the result
+//? of an await call to query the database using the findById method on the Post model. The findById method takes
+//? in the parameter req.params.id. An if statement checks to see if the length of the result of a filter method ran on 
+//? post.likes is strictly equal to 0. The filter method takes in a single instance, like, runs the toString method
+//? on likes.user checking to see if it is strictly equal to req.user.id, if there are no conditions that match, the 
+//? filter method will be returned with an array length of 0. The if statement returns a status 400 and attaches the 
+//? message "Post has not yet been liked" using the json method. A constant with the name removeIndex is assigned to
+//? the result of the map method followed by the result of the indexOf method that is attached to post.likes. First,
+//? the map method takes in a single instance, like, and runs the toString method on like.user returning the post.likes 
+//? array with the user property in string form, which allows for indexOf method to search through the new array
+//? looking for the value that equals req.user.id, returns that index position, and stores it in the removeIndex constant.
+//? The splice method is called on post.likes. The splice method takes in the parameters removeIndex and 1, respectively,
+//? which removes that like from the array. An await call awaits the response from the save method that runs on post, 
+//? which uses mongoose to update the document in the post collection. A res.json is called with post.likes as its parameter. 
+//? The catch block takes in error, as err, and passes in the error message into console.error. A status of 500 is 
+//? sent via res.status and attaches the message "Server Error" using the send method.
 //    9) The POST method is attached to the router instance, passes in the route "/comment/:id", an array containing 
 // auth and another array, and an async callback function that passes in the objects req and res. The second parameter, 
 // which is an array containing auth and an array that has a check function that takes in the string "text" and the 
@@ -127,22 +127,22 @@ const User = require("../../models/User");
 // awaits the response from the save method that runs on post, which uses mongoose to update the document in the post collection. 
 // A res.json is called with post.comments as its parameter. The catch block takes in error, as err, and passes in the error 
 // message into console.error. A status of 500 is sent via res.status and attaches the message "Server Error" using the send method.
-//    10) The DELETE method is attached to the router instance, passes in the route "/comment/:id/:comment_id", auth middleware,
-// and an async callback function. The async function takes in req and res as parameters. Inside the async function, a try-catch 
-// statement is called. The try block creates a constant with the name post and assigns the result of an await call to query 
-// the database, using the findById method on the Post model. The findById method takes in the parameter req.params.id. An if 
-// statement checks to see if the constant post has a falsey value. If so, the if statement then returns a status 404 and attaches 
-// the message "Post not found" using the json method. An if statement checks to see if the value of post.user after the toString 
-// method is run on it does NOT equal the value of req.user.id. If this condition is met, the if statement then returns a status 401 
-// and attaches the message "User not authorized" using the json method. A constant with the name removeIndex is assigned to
-// the result of the map method followed by the result of the indexOf method that is attached to post.comments. First,
-// the map method takes in a single instance, comment, and runs the toString method on comment.user returning the post.comments 
-// array with the user property in string form, which allows for indexOf method to search through the new array looking for the value 
-// that equals req.user.id returns that index position and stores it in the removeIndex constant. The splice method is called on 
-// post.comments. The splice method takes in the parameters removeIndex and 1, respectively, which removes that comment from the array. 
-// An await call awaits the response from the save method that runs on post, using mongoose to update the document in the post collection.
-// A res.json is called with post.comments as its parameter. The catch block takes in error, as err, and passes in the error message into 
-// console.error. A status of 500 is sent via res.status and attaches the message "Server Error" using the send method.
+//?    10) The DELETE method is attached to the router instance, passes in the route "/comment/:id/:comment_id", auth middleware,
+//? and an async callback function. The async function takes in req and res as parameters. Inside the async function, a try-catch 
+//? statement is called. The try block creates a constant with the name post and assigns the result of an await call to query 
+//? the database, using the findById method on the Post model. The findById method takes in the parameter req.params.id. An if 
+//? statement checks to see if the constant post has a falsey value. If so, the if statement then returns a status 404 and attaches 
+//? the message "Post not found" using the json method. An if statement checks to see if the value of post.user after the toString 
+//? method is run on it does NOT equal the value of req.user.id. If this condition is met, the if statement then returns a status 401 
+//? and attaches the message "User not authorized" using the json method. A constant with the name removeIndex is assigned to
+//? the result of the map method followed by the result of the indexOf method that is attached to post.comments. First,
+//? the map method takes in a single instance, comment, and runs the toString method on comment.user returning the post.comments 
+//? array with the user property in string form, which allows for indexOf method to search through the new array looking for the value 
+//? that equals req.user.id returns that index position and stores it in the removeIndex constant. The splice method is called on 
+//? post.comments. The splice method takes in the parameters removeIndex and 1, respectively, which removes that comment from the array. 
+//? An await call awaits the response from the save method that runs on post, using mongoose to update the document in the post collection.
+//? A res.json is called with post.comments as its parameter. The catch block takes in error, as err, and passes in the error message into 
+//? console.error. A status of 500 is sent via res.status and attaches the message "Server Error" using the send method.
 
 // @route   POST API/posts
 // @desc    Create a post

@@ -4,40 +4,40 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile } from "../../actions/profile";
 
-// Purpose:
-//    1) To create a form that allows a user to create a profile for the first time.
+//TODO Purpose:
+//TODO    1) To create a form that allows a user to create a profile for the first time.
 
 // How it works:
 //     1) The CreateProfile function takes in createProfile action and the history prop.
-//     2) The CreateProfile function calls a useState hook and sets properties of company, website,
-// location, status, skills, githubusername, bio, twitter, facebook, linkedin, youtube, instagram to an
-// empty string. The useState is deconstructed to an object called formData and a function called setFormData.
+//?     2) The CreateProfile function calls a useState hook and sets properties of company, website,
+//? location, status, skills, githubusername, bio, twitter, facebook, linkedin, youtube, instagram to an
+//? empty string. The useState is deconstructed to an object called formData and a function called setFormData.
 //     3) The CreateProfile function calls another useState hook passing in false and deconstructs a boolean
 // called toDateDisabled and a function named toggleDisabled off of the useState.
-//     4) The following constants are deconstructed off of the formData object: company, website, location,
-// status, skills, githubusername, bio, twitter, facebook, linkedin, youtube, instagram.
+//?     4) The following constants are deconstructed off of the formData object: company, website, location,
+//? status, skills, githubusername, bio, twitter, facebook, linkedin, youtube, instagram.
 //     5) A onChange function is defined passing in e (the event object) that returns setFormData calling it
 // with the following parameters: the entire state of formData and the Key-Value pair e.target.name: e.target.value
 // inside of an object.
-//     6) The CreateProfile function returns a Fragment that contains h1 tag saying Create Your Profile, a p tag
-// saying Let's get some information to make your profile stand out, a small tag saying * = required field, and
-// a form tag.
+//?     6) The CreateProfile function returns a Fragment that contains h1 tag saying Create Your Profile, a p tag
+//? saying Let's get some information to make your profile stand out, a small tag saying * = required field, and
+//? a form tag.
 //     7) The form tag contains a select tag that has the following options: * Select Professional Status (shown
 // by default), Developer, Junior Developer, Senior Developer, Manager, Student or Learning, Instructor or Teacher,
 // Intern, Other. The value attribute of the select tag is set to the status constant. The onChange attribute of
 // the select tag is set to an anonymous function that passes in e and calls the onChange function.
-//     8) The form tag contains a div tag that contains inputs for company, website, location, skills, githubusername,
-// bio. All inputs have an onChange attribute that calls the onChange function; with the website input having its
-// value set to the urlToRender function passing in website as a parameter. Underneath the inputs is a button tag
-// with an onClick attribute assigned to an anonymous function that calls a function called toggleSocialInputs and
-// passing in !displaySocialInputs (meaning whatever the opposite value of the current state of displaySocialInputs),
-// effectively making it into a toggle button for showing or hiding the social media input fields.
+//?     8) The form tag contains a div tag that contains inputs for company, website, location, skills, githubusername,
+//? bio. All inputs have an onChange attribute that calls the onChange function; with the website input having its
+//? value set to the urlToRender function passing in website as a parameter. Underneath the inputs is a button tag
+//? with an onClick attribute assigned to an anonymous function that calls a function called toggleSocialInputs and
+//? passing in !displaySocialInputs (meaning whatever the opposite value of the current state of displaySocialInputs),
+//? effectively making it into a toggle button for showing or hiding the social media input fields.
 //     9) A JSX element checks displaySocialInputs, and if it contains a truth value, it will return a Fragment containing
 // input fields for twitter, facebook, youtube, linkedin, instagram. All of their values are set to constants with
 // the same as their name attribute and onChange attributes are set to anonymous functions that call onChange function.
 // Also, a Link fragment that will take a user to the dashboard route. Lastly, an input tag with the type of
 // submit that once clicked will trigger the onSubmit property on the form.
-//    10) The createProfile action is defined as a required function in CreateProfile.propTypes.
+//?    10) The createProfile action is defined as a required function in CreateProfile.propTypes.
 
 const urlToRender = (link) => {
   if (!link.match(/^[a-zA-Z]+:\/\//)) {

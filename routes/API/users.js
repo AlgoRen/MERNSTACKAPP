@@ -8,8 +8,8 @@ const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
 
-// Purpose:
-//      1) To handle POST request to "/api/users" that come from the auth action file.
+//TODO Purpose:
+//TODO      1) To handle POST request to "/api/users" that come from the auth action file.
 
 // How it works:
 //      1) The POST method is attached to the router instance, also known as a mini-app, that passes in the route
@@ -28,19 +28,19 @@ const User = require('../../models/User');
 // the user variable for a truth value, if true, the if statement will return a status of 400 with res.status and an object 
 // containing the property errors set to an array that holds a message saying "User already exists" within an object using 
 // an attached json method.
-//      2) A constant is created with the name of avatar and is set to the result of the url method being called on the 
-// gravatar object (a package), this is done to grab the avatar url of a user who has a registered email with the gravatar
-// service. The url method takes in email and an object with the properties s set to the string "200", r set to the string 
-// "pg", and d set to the string "mm". 
+//?      2) A constant is created with the name of avatar and is set to the result of the url method being called on the 
+//? gravatar object (a package), this is done to grab the avatar url of a user who has a registered email with the gravatar
+//? service. The url method takes in email and an object with the properties s set to the string "200", r set to the string 
+//? "pg", and d set to the string "mm". 
 //      3) The variable user is set to a new instanced User object that contains the properties name, email, avatar, and 
 // password. 
-//      4) A constant is created with the name salt and is set to the result of an await call to the genSalt method being called 
-// on the bcrypt object (a package) which creates a 10 digit randomly generated code by passing in the number 10 into the genSalt
-// method. The variable user.password is then set to the result of an await call to the hash method being called on the bcrypt
-// object. The hash method takes in the constant password and the newly created constant hash in order to encrypt the users
-// password. An await call awaits the response from the save method that runs on user, which uses mongoose to update the 
-// document in the user collection. A constant is created with the name payload and is set to an object with the property
-// user with an object as a value, which has the id property set to user.id.
+//?      4) A constant is created with the name salt and is set to the result of an await call to the genSalt method being called 
+//? on the bcrypt object (a package) which creates a 10 digit randomly generated code by passing in the number 10 into the genSalt
+//? method. The variable user.password is then set to the result of an await call to the hash method being called on the bcrypt
+//? object. The hash method takes in the constant password and the newly created constant hash in order to encrypt the users
+//? password. An await call awaits the response from the save method that runs on user, which uses mongoose to update the 
+//? document in the user collection. A constant is created with the name payload and is set to an object with the property
+//? user with an object as a value, which has the id property set to user.id.
 //      5) The sign method is called on the jwt object (a package) that takes in payload, config.get('jwtSecret'), an object
 // containing the property expiresIn and the value of 360000, and a callback function. The callback function takes in err and
 // token as parameters. The callback function calls an if statement checking for an err, if true, it throws err. A res.json is 

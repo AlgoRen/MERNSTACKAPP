@@ -24,29 +24,29 @@ import { loadUser } from "./actions/auth";
 
 import "./App.css";
 
-// Purpose:
-//    1) To be the main focal point of the application.
-//    2) To handle all the routing of the pages by deciding which routes should load what components.
-//    3) To decide which routes will be public and which routes will be private, meaning need valid
-// login credentials.
-//    4) To make a token found in localStorage become a default token through setAuthToken.
+//TODO Purpose:
+//TODO    1) To be the main focal point of the application.
+//TODO    2) To handle all the routing of the pages by deciding which routes should load what components.
+//TODO    3) To decide which routes will be public and which routes will be private, meaning need valid
+//TODO login credentials.
+//TODO    4) To make a token found in localStorage become a default token through setAuthToken.
 
 // How it works:
 //    1) Calls an If-Else statement and checks for a valid value of localStorage.token, if the value
 // is valid then the setAuthToken function is called passing in localStorage.token as a parameter.
-//    2) The function App calls a useEffect hook that makes a dispatch request to the store object. 
-// The dispatch action is called with the loadUser action as its parameter. The useEffect hook uses 
-// no dependencies. 
+//?    2) The function App calls a useEffect hook that makes a dispatch request to the store object. 
+//? The dispatch action is called with the loadUser action as its parameter. The useEffect hook uses 
+//? no dependencies. 
 //    3) The function App returns a Provider fragment with a prop named store set to the store object. 
 // Inside that Provider fragment, a Router fragment contains a Fragment and inside that Fragment first 
 // is a Navbar fragment. Followed by a Route fragment with props exact path pointing to the root location 
 // of the application and the prop component set to Landing, loading the Landing component on "/" visit. 
 // The Route Fragment loading the Landing component is followed by a section that acts as the web pages
 // container. Inside this section are an Alert and a Switch fragment. 
-//    4) The Switch fragment contains: a Route fragment where a visit to "/register" loads the Register 
-// component, a Route Fragment where a visit to "/login" loads the Login component, a Route fragment where
-// a visit to "/profiles" loads the Profiles component, a Route fragment where a visit to "/profile/:id" 
-// loads the Profile component.
+//?    4) The Switch fragment contains: a Route fragment where a visit to "/register" loads the Register 
+//? component, a Route Fragment where a visit to "/login" loads the Login component, a Route fragment where
+//? a visit to "/profiles" loads the Profiles component, a Route fragment where a visit to "/profile/:id" 
+//? loads the Profile component.
 //    5) The Switch fragment also contains and uses PrivateRoute fragments, which functionality we defined in 
 // components/routing/PrivateRoute.js, such as, a PrivateRoute fragment where a visit to "/dashboard" loads 
 // the Dashboard component, a PrivateRoute fragment where a visit to "/create-profile" loads the CreateProfile

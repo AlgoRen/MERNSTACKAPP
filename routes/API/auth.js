@@ -7,21 +7,26 @@ const config = require("config");
 const { check, validationResult } = require("express-validator");
 const User = require("../../models/User");
 
-// Purpose:
-//    1) To handle GET request to "/api/auth" that come from the auth action file.
-//    2) To handle POST request to "/api/auth" that come from the auth action file.
+// * Messing around *
+// ? With Tags
+// TODO: Should delete later.
+// ! Better Comments GG.
+
+//TODO Purpose:
+//TODO    1) To handle GET request to "/api/auth" that come from the auth action file.
+//TODO    2) To handle POST request to "/api/auth" that come from the auth action file.
 
 // How it works:
 //    1) The GET method is attached to the router instance, also known as a mini-app, that passes in the route
 // "/", the function auth, and a async callback function that passes in req, res objects.
-//    2) The GET method ran on the router instance loads a try-catch statement within the async callback function.
+//?    2) The GET method ran on the router instance loads a try-catch statement within the async callback function.
 //    3) The try block creates a constant with the name user that assigns the result of an await call, with the 
 // use of mongoose to query the database, using the findById method on the User model. The findById method takes in 
 // the parameter req.user.id, attaches the select method, and passes in "-password" to omit the password field.
 // The result of user is then passed in as parameter into res.json that will send it to the action that made
 // the request.
-//    4) The catch block takes in error, as err, and passes in the error message into console.error. 
-// A status of 500 is sent via res.status and attaches the message "Server Error" using the send method.
+//?    4) The catch block takes in error, as err, and passes in the error message into console.error. 
+//? A status of 500 is sent via res.status and attaches the message "Server Error" using the send method.
 //    5) The POST method is attached to the router instance, passes in the route "/", an array with 
 //  express validator functions called check. The first of the check functions has the parameters "email" and 
 // "Please include a valid email" and attaches an isEmail method to verify if the email is a valid email.
@@ -32,7 +37,7 @@ const User = require("../../models/User");
 // object as a parameter. An if statement checks the truth value of the constant errors not being empty, 
 // meaning errors do exist. The if statement then returns a status 400 and a JSON object containing
 // the array of errors. The constants email and password are deconstructed off of req.body. 
-//    6) The async function loads a try-catch statement. 
+//?    6) The async function loads a try-catch statement. 
 //    7) The try block creates a variable with the name user that assigns the result of an await call to 
 // query the database using the findOne method on the User model. The findOne method takes in the parameter 
 // email contained in a object. If the returned result of user is equal to a false condition, such as null, 
@@ -42,14 +47,14 @@ const User = require("../../models/User");
 // as parameters, this is done to check the encrypted password with the non-encrypted password in a secure manner. 
 // If the returned result of isMatch is equal to a false condition, such as null, then an if statement returns a 
 // status 400 and a JSON object containing a message saying "Invalid Credentials" with the res object.
-//    8) A constant with the name payload is created and is set to an object containing a property called
-// user, which is then set to an object with the property id set to user.id. 
+//?    8) A constant with the name payload is created and is set to an object containing a property called
+//? user, which is then set to an object with the property id set to user.id. 
 //    9) A sign method is attached to the jwt package. The sign method takes in the payload constant, an 
 // object containing an expiresIn property set to the value of 360000, a callback function that takes in 
 // the parameters err and token, respectively. The callback function an if throw statement, if there is 
 // an error, an error will be thrown, else the token will be sent in object notation with res.json. 
-//    10) The catch block takes in error, as err, and passes in the error message into console.error. 
-// A status of 500 is sent via res.status and attaches the message "Server Error" using the send method.
+//?    10) The catch block takes in error, as err, and passes in the error message into console.error. 
+//? A status of 500 is sent via res.status and attaches the message "Server Error" using the send method.
 
 
 // @route   GET API/auth

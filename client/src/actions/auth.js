@@ -12,29 +12,29 @@ import {
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
-// Purpose:
-//    1) To identify if a token is stored in localStorage, if true,
-// the token gets sent to setAuthToken. Sends a request to "/api/auth" to check the
-// token to determine if it is valid. If the request is successful "USER_LOADED"
-// state is updated. Else "AUTH_ERROR" state is dispatched.
-//    2) To create an action that registers a user by sending the appropiate data
-// to the back-end for account creation.
-//    3) To create an action that logins a user by sending the email and password
-// to the back-end for validation.
-//    4) To create an action that clears the approiate data from the application state
-// and logs the user out.
+//TODO Purpose:
+//TODO    1) To identify if a token is stored in localStorage, if true,
+//TODO the token gets sent to setAuthToken. Sends a request to "/api/auth" to check the
+//TODO token to determine if it is valid. If the request is successful "USER_LOADED"
+//TODO state is updated. Else "AUTH_ERROR" state is dispatched.
+//TODO    2) To create an action that registers a user by sending the appropiate data
+//TODO to the back-end for account creation.
+//TODO    3) To create an action that logins a user by sending the email and password
+//TODO to the back-end for validation.
+//TODO    4) To create an action that clears the approiate data from the application state
+//TODO and logs the user out.
 
 // How it works:
 //    1) The loadUser function makes a GET request to "/api/auth" if successful it will dispatch "USER_LOADED"
 // and send the returned data as a payload to be handeled by USER_LOADED reducer else dispatches AUTH_ERROR.
-//    2) The register function makes a POST request to "/api/users" with the config object and form data.
-// If request is successful then "REGISTER_SUCCESS" will be dispatched along with loadUser action.
-// Else user will be presented with an alert message displaying the error and "REGISTER_FAIL" will be dispatched.
+//?    2) The register function makes a POST request to "/api/users" with the config object and form data.
+//? If request is successful then "REGISTER_SUCCESS" will be dispatched along with loadUser action.
+//? Else user will be presented with an alert message displaying the error and "REGISTER_FAIL" will be dispatched.
 //    3) For both register and login function a config object is created with the needed headers
 // for making a post request to the back-end.
-//    4) The login function makes a POST request to "/api/auth" with the config object and form data.
-// If request is succesful then "LOGIN_SUCCESS" will be dispatched along with loadUser action.
-// Else user will be presented with an alert message displaying the error and "LOGIN_FAIL" will be dispatched.
+//?    4) The login function makes a POST request to "/api/auth" with the config object and form data.
+//? If request is succesful then "LOGIN_SUCCESS" will be dispatched along with loadUser action.
+//? Else user will be presented with an alert message displaying the error and "LOGIN_FAIL" will be dispatched.
 //    5) The logout function dispatches "CLEARPROFILE" and "LOGOUT"
 
 // Load User
